@@ -1,0 +1,11 @@
+ls *.jpg
+net = googlenet;
+imds = imageDatastore("file*.jpg")
+fname = imds.Files
+img = readimage(imds,7);
+preds = classify(net,imds)
+
+bar(max(scores,[],2))
+xticklabels(preds)
+xtickangle(60)
+ylabel("Score of Prediction")
