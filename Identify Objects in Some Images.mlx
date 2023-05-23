@@ -1,0 +1,6 @@
+img1 = imread("file01.jpg");
+imshow(img1)
+img2 = imread("file03.jpg");
+img3 = imread("file03.jpg");
+imshow(img2)
+imshow(img3)
