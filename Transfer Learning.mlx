@@ -1,0 +1,12 @@
+load pathToImages
+flower_ds = imageDatastore(pathToImages,"IncludeSubfolders",true,"LabelSource","foldernames");
+[trainImgs,testImgs] = splitEachLabel(flower_ds,0.6);
+resizeTrainImgs = augmentedImageDatastore([224 224],trainImgs);
+resizeTestImgs = augmentedImageDatastore([224 224],testImgs);
+numClasses = numel(categories(flower_ds.Labels));
+
+load untrainedNetwork
+
+opts = trainingOptions("sgdm","InitialLearnRate",0.001,"MaxEpochs",1,"VerboseFrequency",2);
+
+[flowernet,info] = trainNetwork(resizeTrainImgs,lgraph,opts)
