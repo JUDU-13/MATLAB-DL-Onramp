@@ -12,3 +12,8 @@ numCorrect = nnz(flwrPreds == flwrActual)
 fracCorrect = numCorrect/numel(flwrPreds)
 
 confusionchart(flwrActual,flwrPreds)
+
+idxWrong = find(flwrPreds ~= flwrActual)
+idx = idxWrong(1)
+imshow(readimage(testImgs,idx))
+title(testImgs.Labels(idx))
